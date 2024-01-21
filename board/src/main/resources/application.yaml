@@ -10,6 +10,9 @@ logging:
 
 spring:
   datasource:
+#    url: jdbc:h2:mem:testdb
+#    username: sa
+#    driver-class-name: org.h2.Driver
     url: jdbc:mysql://localhost:3306/board
     username: jinhak
     password: 9943
@@ -26,6 +29,6 @@ spring:
     properties:
       hibernate.format_sql: true # 콘솔에 출력되는 쿼리를 보기 좋게 포맷팅
       hibernate.default_batch_fetch_size: 100
-      h2.console.enabled: true
+      h2.console.enabled: false
   sql.init.mode: always
 

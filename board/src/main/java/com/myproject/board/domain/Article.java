@@ -23,9 +23,8 @@ import java.util.Set;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
-@EntityListeners(AuditingEntityListener.class)
 @Entity
-public class Article {
+public class Article extends AuditingFields{
     @Id // pk로 사용할 속성
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 번호 증가
     private Long id;
@@ -46,15 +45,7 @@ public class Article {
     //(생성, 삭제, 업데이트 등)이 자식 엔티티에도 적용됨을 의미한다. 예를 들어, Article 엔티티를 삭제하면 관련된 모든 ArticleComment 엔티티도 함께 삭제
     // 이 줄은 Article 엔티티가 여러 개의 ArticleComment를 가질 수 있음을 나타내며, 이를 저장하기 위해 Set 컬렉션을 사용
 
-    @CreatedDate @Column(nullable = false) // JPA Auditing 기능
-    private LocalDateTime createdAt; // 생성일시
-    @CreatedBy @Column(nullable = false, length = 100)
-    private String createdBy; // 생성자
-    @LastModifiedDate @Column(nullable = false)
-    private LocalDateTime modifiedAt; // 수정일시
-    @LastModifiedBy @Column(nullable = false, length = 100)
-    private String modifiedBy; // 수정자
-
+    
     protected Article(){}
 
     private Article(String title, String content, String hashtag) {
