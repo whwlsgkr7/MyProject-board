@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @SpringBootTest
 public class DataRestTest {
-    private final MockMvc mvc; // final 변수는 생성자에서만 초기화 가능, 생성자 주입을 사용할 때 자주 사용
+    private final MockMvc mvc; // final이 붙은 변수는 생성자에서만 초기화 가능, 생성자 주입을 사용할 때 자주 사용
    // MockMvc는 웹 서버를 실제로 실행시키지 않고도 스프링 MVC의 동작을 시뮬레이션할 수 있게 해준다.
     // 이를 통해 HTTP 요청과 응답을 모의(Mocking)하여 컨트롤러의 동작을 테스트할 수 있다.
     public DataRestTest(@Autowired MockMvc mvc) {
