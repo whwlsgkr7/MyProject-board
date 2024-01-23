@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/articles")
 @Controller
 public class ArticleController {
-    @GetMapping("/")
+    @GetMapping
     public String articles(Model m){
         m.addAttribute("articles", List.of());
         return "articles/index";
