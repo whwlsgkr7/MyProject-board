@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<thlogic>
+    <attr sel="#header" th:replace="header :: header"/> <!-- #header를 찾아서 header 파일의 header라는 조각을 가져와서 적용하라는 의미 -->
+    <attr sel="#footer" th:replace="footer :: footer"/>
+</thlogic>
