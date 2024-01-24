@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 
+// 클래스에 @Configuration을 사용하면, 이 클래스 내의 @Bean 어노테이션이 붙은 메소드들이 빈으로 등록된다.
+// 이렇게 생성된 빈들은 Spring 컨테이너에서 관리되며, 애플리케이션 전반에서 필요한 의존성 주입에 사용될 수 있다.
 @Configuration
 public class ThymeleafConfig {
 

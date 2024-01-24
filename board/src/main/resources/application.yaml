@@ -1,5 +1,5 @@
 debug: false
-management.endpoints.web.exposure.include: "*"
+management.endpoints.web.exposure.include: "*" # spring Boot Actuator의 모든 엔드포인트를 웹에서 노출
 
 
 logging:
@@ -18,7 +18,7 @@ spring:
     password: 9943
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
-    defer-datasource-initialization: true
+    defer-datasource-initialization: true # data.sql가 실행
     hibernate.ddl-auto: create # DB 자동 초기화
     # create : 기존 테이블 삭제 후 새로운 테이블 생성(개발)
     # create-drop : create와 동일. 단, 종료시 테이블 삭제(개발)
