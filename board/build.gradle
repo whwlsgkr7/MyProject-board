@@ -59,9 +59,9 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-/**
- * QueryDSL Build Options
- */
+
+// QueryDSL Build Options
+
 def querydslDir = "src/main/generated"
 
 sourceSets {

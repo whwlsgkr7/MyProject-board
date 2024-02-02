@@ -29,6 +29,7 @@ public class Article extends AuditingFields{
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 번호 증가
     private Long id;
 
+
     @Setter @Column(nullable = false)
     private String title; // 제목
     @Setter @Column(nullable = false, length = 10000)
@@ -41,7 +42,7 @@ public class Article extends AuditingFields{
     @OrderBy("id")
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
-    // mappedBy는 양방향 맵핑에서 사용하는 것으로 한쪽에서는 FK를 생성하지 않게 하기 위해서 사용한다. CascadeType.ALL은 모든 종류의 작업
+    // 양방향 매핑에서 mappedBy를 쓰는 쪽은 FK를 생성하지 않는다.  CascadeType.ALL은 모든 종류의 작업
     //(생성, 삭제, 업데이트 등)이 자식 엔티티에도 적용됨을 의미한다. 예를 들어, Article 엔티티를 삭제하면 관련된 모든 ArticleComment 엔티티도 함께 삭제
     // 이 줄은 Article 엔티티가 여러 개의 ArticleComment를 가질 수 있음을 나타내며, 이를 저장하기 위해 Set 컬렉션을 사용
 
