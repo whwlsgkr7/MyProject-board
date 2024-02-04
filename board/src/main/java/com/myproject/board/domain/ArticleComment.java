@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Getter
-@ToString
+@ToString(callSuper = true)
 @Table(indexes = {
         @Index(columnList = "content"),
         @Index(columnList = "createdAt"),
@@ -27,21 +27,24 @@ public class ArticleComment extends AuditingFields {
 
     @Setter @ManyToOne(optional = false) // optional = false는 Article은 null이 아닌 값이 항상 존재해야 한다는 의미
     private Article article; // 게시글 (id)
+    @Setter @ManyToOne(optional = false)
+    private UserAccount userAccount; // 유저 정보 (ID)
+
     @Setter @Column(nullable = false, length = 500)
     private String content; // 본문
 
 
     protected ArticleComment() {}
 
-    private ArticleComment(Article article, String content) {
+    private ArticleComment(Article article, UserAccount userAccount, String content) {
         this.article = article;
+        this.userAccount = userAccount;
         this.content = content;
     }
 
-    public static ArticleComment of(Article article, String content) {
-        return new ArticleComment(article, content);
+    public static ArticleComment of(Article article, UserAccount userAccount, String content) {
+        return new ArticleComment(article, userAccount, content);
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
