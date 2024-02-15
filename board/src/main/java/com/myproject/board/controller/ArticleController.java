@@ -37,6 +37,7 @@ public class ArticleController {
 
         m.addAttribute("articles", articles);
         m.addAttribute("paginationBarNumbers", barNumbers);
+        map.addAttribute("totalCount", articleService.getArticleCount());
 
         return "articles/index";
     }
