@@ -37,7 +37,8 @@ public class ArticleController {
 
         m.addAttribute("articles", articles);
         m.addAttribute("paginationBarNumbers", barNumbers);
-        m.addAttribute("totalCount", articleService.getArticleCount());
+        m.addAttribute("searchTypes", SearchType.values());
+
 
         return "articles/index";
     }
@@ -47,6 +48,7 @@ public class ArticleController {
         ArticleWithCommentsResponse article = ArticleWithCommentsResponse.from(articleService.getArticle(articleId));
         m.addAttribute("article", article);
         m.addAttribute("articleComments", article.articleCommentsResponse());
+        m.addAttribute("totalCount", articleService.getArticleCount());
         return "articles/detail";
     }
 }
