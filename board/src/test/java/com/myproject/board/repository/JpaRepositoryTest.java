@@ -31,49 +31,66 @@ class JpaRepositoryTest {
         this.userAccountRepository = userAccountRepository;
     }
 
+    @DisplayName("select 테스트")
+    @Test
+    void givenTestData_whenSelecting_thenWorkFine(){
+        // given
+
+        // when
+        List<Article> articles = articleRepository.findAll();
+
+        // then
+        assertThat(articles).isNotNull().hasSize(50); // data.sql 참조
+    }
+
 
     @DisplayName("insert 테스트")
     @Test
-    void givenTestData_whenInserting_thenWorksFine() {
-        // Given
-        long previousCount = articleRepository.count();
-        UserAccount userAccount = userAccountRepository.save(UserAccount.of("newjinhak", "pw", null, null, null));
-        Article article = Article.of(userAccount, "new article", "new content", "#spring");
+    void givenTestData_whenInserting_thenWorkFine(){
+        // given
+        long previousCnt = articleRepository.count();
+        UserAccount userAccount = UserAccount.of("jinhak", "1234", "www@aaa", "jinhak", "aaa");
+        Article article = Article.of(userAccount, "aaa", "bbb", "hash");
 
-        // When
+        // when
         articleRepository.save(article);
 
-        // Then
-        assertThat(articleRepository.count()).isEqualTo(previousCount + 1);
+        // then
+        assertThat(articleRepository.count()).isEqualTo(previousCnt + 1);
     }
 
     @DisplayName("update 테스트")
     @Test
-    void given_when_then(){
-        // given 준비
+    void givenTestData_whenUpdating_thenWorkFine(){
+        // given
         Article article = articleRepository.findById(1L).orElseThrow();
-        String updateHashtag = "#springboot";
-        article.setHashtag(updateHashtag);
+        article.setHashtag("#springboo");
 
-        // when 실행
+        // when
         Article savedArticle = articleRepository.saveAndFlush(article);
-// Flush는 영속성 컨텍스트에 캐시된 모든 변경사항을 데이터베이스에 즉시 반영하도록 강제한다.
-        // then 검증
-        assertThat(savedArticle).hasFieldOrPropertyWithValue("hashtag", updateHashtag);
+
+        // then
+        assertThat(savedArticle).hasFieldOrPropertyWithValue("hashtag", "#springboo");
+
     }
 
     @DisplayName("delete 테스트")
     @Test
-    void given_whenDeleting_then(){
-        // given 준비
+    void givenTestData_whenDeleting_thenWorkFine(){
+        // given
         Article article = articleRepository.findById(1L).orElseThrow();
-        long previousArticleCount = articleRepository.count();
+        long previousArticleCnt = articleRepository.count();
 
-
-        // when 실행
+        // when
         articleRepository.delete(article);
 
-        // then 검증
-        assertThat(articleRepository.count()).isEqualTo(previousArticleCount - 1);
+        // then
+        assertThat(articleRepository.count()).isEqualTo(previousArticleCnt - 1);
+
     }
+
+
+
+
+
 }

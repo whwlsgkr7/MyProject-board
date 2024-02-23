@@ -2,6 +2,7 @@ package com.myproject.board.repository;
 
 import com.myproject.board.domain.Article;
 import com.myproject.board.domain.QArticle;
+import com.myproject.board.repository.querydsl.ArticleRepositoryCustom;
 import com.querydsl.core.types.dsl.DateTimeExpression;
 import com.querydsl.core.types.dsl.StringExpression;
 import org.springframework.data.domain.Page;
@@ -15,6 +16,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource
 public interface ArticleRepository extends
         JpaRepository<Article, Long>, // 엔티티를 위한 기본 CRUD작업을 제공, entity와 pk 타입을 지넥릭 타입으로 넣어줌
+        ArticleRepositoryCustom,
         QuerydslPredicateExecutor<Article>, // 복잡한 쿼리 로직을 생성하고 실행할 수 있음
         QuerydslBinderCustomizer<QArticle> {
 
