@@ -27,7 +27,7 @@ public class ArticleComment extends AuditingFields {
 
     @Setter @ManyToOne(optional = false) // optional = false는 Article은 null이 아닌 값이 항상 존재해야 한다는 의미
     private Article article; // 게시글 (id)
-    @Setter @ManyToOne(optional = false)
+    @Setter @ManyToOne(optional = false) @JoinColumn(name = "userId")
     private UserAccount userAccount; // 유저 정보 (ID)
 
     @Setter @Column(nullable = false, length = 500)
