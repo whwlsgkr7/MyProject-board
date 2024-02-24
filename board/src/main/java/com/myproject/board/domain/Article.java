@@ -29,7 +29,7 @@ public class Article extends AuditingFields{
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 번호 증가
     private Long id;
 
-    @Setter @ManyToOne(optional = false)
+    @Setter @ManyToOne(optional = false) @JoinColumn(name = " userId")
     private UserAccount userAccount; // 유저 정보 (ID)
 
     @Setter @Column(nullable = false)
