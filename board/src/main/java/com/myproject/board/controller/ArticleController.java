@@ -3,6 +3,7 @@ package com.myproject.board.controller;
 import com.myproject.board.domain.constant.FormStatus;
 import com.myproject.board.domain.constant.SearchType;
 import com.myproject.board.dto.UserAccountDto;
+import com.myproject.board.dto.request.ArticleRequest;
 import com.myproject.board.dto.response.ArticleResponse;
 import com.myproject.board.dto.response.ArticleWithCommentsResponse;
 import com.myproject.board.service.ArticleService;
@@ -83,7 +84,7 @@ public class ArticleController {
     public String postNewArticle(ArticleRequest articleRequest) {
         // TODO: 인증 정보를 넣어줘야 한다.
         articleService.saveArticle(articleRequest.toDto(UserAccountDto.of(
-                "jinhak", "asdf1234", "jinhak@mail.com", "jinhak", "memo", null, null, null, null
+                "jinhak", "asdf1234", "jinhak@mail.com", "jinhak", "memo"
         )));
 
         return "redirect:/articles";
@@ -103,7 +104,7 @@ public class ArticleController {
     public String updateArticle(@PathVariable Long articleId, ArticleRequest articleRequest) {
         // TODO: 인증 정보를 넣어줘야 한다.
         articleService.updateArticle(articleId, articleRequest.toDto(UserAccountDto.of(
-                "jinhak", "asdf1234", "jinhak@mail.com", "jinhak", "memo", null, null, null, null
+                "jinhak", "asdf1234", "jinhak@mail.com", "jinhak", "memo"
         )));
 
         return "redirect:/articles/" + articleId;
@@ -118,4 +119,4 @@ public class ArticleController {
     }
 
 }
-}
+
