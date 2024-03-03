@@ -26,6 +26,7 @@ public interface ArticleRepository extends
     Page<Article> findByUserAccount_NicknameContaining(String nickname, Pageable pageable);
     Page<Article> findByHashtag(String hashtag, Pageable pageable);
 
+    void deleteByIdAndUserAccount_UserId(Long articleId, String userid);
 
     @Override
     default void customize(QuerydslBindings bindings, QArticle root){ // 인터페이스에는 오직 추상메서드만 선언할 수 있었지만 JAVA8 이후로 default 메서드를 사용해 인터페이스 내에서 구현을 포함하는 메서드를 정의할 수 있다.

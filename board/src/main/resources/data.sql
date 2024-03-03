@@ -1,6 +1,6 @@
 -- 테스트 계정
 insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by) values
-    ('jinhak', 'asdf1234', 'jinhak', 'jinhak@mail.com', 'I am Jinhak.', now(), 'jinhak', now(), 'jinhak');
+    ('jinhak', '{noop}asdf1234', 'jinhak', 'jinhak@mail.com', 'I am Jinhak.', now(), 'jinhak', now(), 'jinhak');
 
 
 
